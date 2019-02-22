@@ -30,3 +30,14 @@ exports.monster_details = (req, res) => {
     res.send(monster);
   });
 };
+
+exports.monster_update = (req, res) => {
+  Monster.findOneAndUpdate(
+    { _id: req.params.id },
+    { $set: req.body },
+    (err, monster) => {
+      if (err) return next(err);
+      res.send("Monster updated.");
+    }
+  );
+};
