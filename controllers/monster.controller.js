@@ -41,3 +41,10 @@ exports.monster_update = (req, res) => {
     }
   );
 };
+
+exports.monster_delete = (req, res) => {
+  Monster.findOneAndDelete({ _id: req.params.id }, (err, monster) => {
+    if (err) return next(err);
+    res.send("Monster deleted.");
+  });
+};
